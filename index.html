@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student OS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="desktop">
+
+
+        <!-- Desktop Icons -->
+
+        <!-- Desktop Icons -->
+
+        <div class="icons">
+
+            <div class="icon" data-app="notes">
+                <div>📝</div>
+                <span>Notes</span>
+            </div>
+
+
+            <div class="icon" data-app="tasks">
+                <div>✅</div>
+                <span>Tasks</span>
+            </div>
+
+
+            <div class="icon" data-app="calculator">
+                <div>🧮</div>
+                <span>Calculator</span>
+            </div>
+
+
+            <div class="icon" data-app="calendar">
+                <div>📅</div>
+                <span>Calendar</span>
+            </div>
+
+
+            <div class="icon" data-app="music">
+                <div>🎵</div>
+                <span>Music</span>
+            </div>
+
+
+            <div class="icon" data-app="settings">
+                <div>⚙️</div>
+                <span>Settings</span>
+            </div>
+
+
+            <div class="icon" data-app="files">
+                <div>📁</div>
+                <span>Files</span>
+            </div>
+
+          <div class="icon" data-app="browser">
+    <div>🌐</div>
+    <span>Browser</span>
+</div>
+          <div class="icon" data-app="homework">
+    <div>📚</div>
+    <span>Homework</span>
+</div>
+          <div class="icon" data-app="grades">
+    <div>📊</div>
+    <span>Grades</span>
+          </div>
+          <div class="icon" data-app="focus">
+    <div>⏱</div>
+    <span>Focus</span>
+</div>
+          
+        </div>
+
+        <!-- Application Window -->
+
+        <div class="window hidden" id="window">
+
+
+            <div class="window-header">
+
+
+                <h3 id="windowTitle">
+                    Student OS
+                </h3>
+
+
+
+                <div>
+
+                    <button id="minimize">
+—
+</button>
+
+
+                    <button id="maximize">
+□
+</button>
+
+
+                    <button id="close">
+✕
+</button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="window-content" id="windowContent">
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <!-- TASKBAR -->
+
+        <div class="taskbar">
+
+
+            <button id="start">
+⊞
+</button>
+
+
+            <div id="runningApps">
+
+            </div>
+
+
+
+            <div class="search">
+
+                🔍
+
+                <input placeholder="Search Student OS">
+
+            </div>
+
+
+
+
+            <div class="right">
+
+
+                <span id="clock">
+00:00
+</span>
+
+
+                <button id="theme">
+🌙
+</button>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- START MENU -->
+
+        <div id="startMenu" class="start-menu hidden">
+
+
+            <h2>
+                Student OS
+            </h2>
+
+
+            <button onclick="openWindow('notes')">
+📝 Notes
+</button>
+
+
+            <button onclick="openWindow('tasks')">
+✅ Tasks
+</button>
+
+
+            <button onclick="openWindow('calculator')">
+🧮 Calculator
+</button>
+
+
+            <button onclick="openWindow('calendar')">
+📅 Calendar
+</button>
+
+
+            <button onclick="openWindow('settings')">
+⚙ Settings
+</button>
+
+            <button onclick="openWindow('files')">
+📁 Files
+</button>
+            <button onclick="openWindow('music')">
+
+🎵 Music
+
+</button>
+          <button onclick="openWindow('browser')">
+🌐 Browser
+</button>
+
+<button onclick="openWindow('homework')">
+📚 Homework
+</button>
+          <button onclick="openWindow('grades')">
+📊 Grades
+</button>
+
+<button onclick="openWindow('focus')">
+⏱ Focus
+</button>
+          
+          
+        </div>
+
+
+
+        <script src="script.js"></script>
+
+
+</body>
+
+</html>
