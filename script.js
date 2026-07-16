@@ -387,8 +387,14 @@ let currentApp = "";
 
 
 function openWindow(app) {
-
-
+appWindow.style.width = "700px";
+appWindow.style.height = "450px";
+appWindow.style.left = "250px";
+appWindow.style.top = "100px";
+appWindow.style.width = "700px";
+appWindow.style.height = "450px";
+appWindow.style.left = "250px";
+appWindow.style.top = "100px";
    currentApp = app;
 
    addRunningApp(app);
@@ -423,14 +429,59 @@ function openWindow(app) {
 
 
 
+function searchApps(){
+
+    const input =
+    document.getElementById("taskSearch");
+
+    const value =
+    input.value.toLowerCase();
+
+    let found = null;
+
+    document.querySelectorAll(".icon").forEach(icon=>{
+
+        const app = icon.dataset.app.toLowerCase();
+
+        const visible = app.includes(value);
+
+        icon.style.display = visible ? "block" : "none";
+
+        if(visible && !found){
+            found = icon.dataset.app;
+        }
+
+    });
+
+    input.onkeydown = function(e){
+
+        if(e.key==="Enter" && found){
+
+            openWindow(found);
+
+            input.value="";
+            searchApps();
+
+        }
+
+    };
+
+}
 
 
 
-function closeWindow() {
+function closeWindow(){
 
+    appWindow.classList.add("hidden");
 
-   appWindow.classList.add("hidden");
+    const button = document.getElementById(currentApp + "Btn");
 
+    if(button){
+        button.remove();
+    }
+
+    windowContent.innerHTML = "";
+    currentApp = "";
 
 }
 
@@ -512,10 +563,45 @@ document
 
 
 
+let draggedIcon = null;
+let iconOffsetX = 0;
+let iconOffsetY = 0;
 
+document.querySelectorAll(".icon").forEach(icon => {
 
+    icon.addEventListener("mousedown", function(e){
 
+        draggedIcon = icon;
 
+        iconOffsetX = e.clientX - icon.offsetLeft;
+        iconOffsetY = e.clientY - icon.offsetTop;
+
+        icon.style.cursor = "grabbing";
+    });
+
+});
+
+document.addEventListener("mousemove", function(e){
+
+    if(!draggedIcon) return;
+
+    draggedIcon.style.left =
+        (e.clientX - iconOffsetX) + "px";
+
+    draggedIcon.style.top =
+        (e.clientY - iconOffsetY) + "px";
+
+});
+
+document.addEventListener("mouseup", function(){
+
+    if(!draggedIcon) return;
+
+    draggedIcon.style.cursor = "grab";
+
+    draggedIcon = null;
+
+});
 
 // ===============================
 // DESKTOP ICONS
@@ -1450,7 +1536,30 @@ function closeTab(index) {
     openTab(activeTab);
 }
 
+function addRunningApp(app){
 
+    let bar = document.getElementById("runningApps");
+
+    let existing = document.getElementById(app + "Btn");
+
+    if(existing){
+        existing.classList.add("active");
+        return;
+    }
+
+    let button = document.createElement("div");
+
+    button.id = app + "Btn";
+    button.className = "app-button";
+    button.textContent = app;
+
+    button.onclick = () => {
+        openWindow(app);
+    };
+
+    bar.appendChild(button);
+
+}
    // ===============================
    // TASK APP
    // ===============================
